@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制立方体</title>
+
+    <style>
+        body{
+            transform-style: preserve-3d;
+            background-color: darkgray;
+        }
+        /*步骤*/
+        /*01 先有一个立方体 当立方体正对着我们的视线的时候 最容易绘制，此时不仅角度容易计算，而且显示在眼前的 只有一个面*/
+        /*通用设置*/
+        div {
+            width: 300px;
+            height: 300px;
+            /*background-color: red;*/
+            position: absolute;
+            top: 40%;
+            left: 40%;
+
+            font-size: 100px;
+            text-align: center;
+            line-height: 200px;
+            color: white;
+            text-shadow: 0 0 10px green;
+        }
+        /*顶部*/
+        .wrap div:nth-child(1){
+            background-color: aqua;
+            transform-origin: top;
+            transform: rotateX(90deg);
+        }
+        /*底部*/
+        div:nth-child(2){
+            background-color: orange;
+            transform-origin: bottom;
+            transform: rotateX(270deg);
+        }
+        /*左边*/
+        div:nth-child(3){
+            background-color: yellow;
+            transform-origin: left;
+            transform: rotateY(270deg);
+        }
+        /*右边*/
+        div:nth-child(4){
+            background-color: green;
+            transform-origin: right;
+            transform: rotateY(90deg);
+        }
+        /*前面*/
+        div:nth-child(5){
+            background-color: blue;
+            transform: translateZ(300px);
+        }
+        /*后面*/
+        div:nth-child(6){
+            background-color: purple;
+            transform: rotateY(180deg);
+        }
+
+        /*02 立方体准备完毕，开始旋转展示*/
+        .wrap {
+            transform-style: preserve-3d;
+            transition: transform 10s;
+        }
+
+        /*.wrap:hover {*/
+            /*transform: rotateX(1000deg) rotateY(1000deg) rotateZ(1000deg) translate(100px,100px);*/
+        /*}*/
+        @keyframes translate3D {
+            33.3%{transform: rotate3D(-1,1,1,-160deg)}
+
+            50%{transform: rotate3D(1,1,1,260deg)}
+            66.6%{transform: rotate3D(2,4,6,350deg)}
+
+            80%{transform: translate3D(150px,300px,-400px)}
+            100%{transform: rotate3D(-1,1,1,-160deg)}
+        }
+
+        .wrap{
+            animation: translate3D 15s infinite ;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+<div class="wrap">
+    <div><img src="images/4.jpg" width="300" height="300" alt=""></div>
+    <div><img src="images/6.jpg" width="300" height="300" alt=""></div>
+    <div><img src="images/7.jpg" width="300" height="300" alt=""></div>
+    <div><img src="images/8.jpg" width="300" height="300" alt=""></div>
+    <div><img src="images/9.jpg" width="300" height="300" alt=""></div>
+    <div><img src="images/10.jpg" width="300" height="300" alt=""></div>
+</div>
+<!--<script>-->
+    <!--document.querySelector('.wrap').style.transform= 'rotateX('+1000+'deg) rotateY('+1000+'deg) rotateZ('+1000+'deg) translate('+100+'px,'+100+'px)';-->
+<!--</script>-->
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D照片墙</title>
+    <style>
+        body{
+            background-color: papayawhip;
+        }
+        .photo-wall-3d{
+            margin: 0 450px;
+        }
+        .stage{
+            /*被设置perspective属性的父元素会被当成参考系*/
+            perspective: 2500px;
+        }
+        .contains{
+            transform-style: preserve-3d;
+            background-color: yellow;
+            /*把contains宽度设置为和图片宽度一致,保证旋转轴是图片的中心位置*/
+            width: 400px;
+
+            position: absolute;
+            top: 200px;
+            /*height: 100px;*/
+
+            animation: rotate3D 15s infinite;
+        }
+        img{
+            width: 400px;
+            position: absolute;
+        }
+
+        /*!*创建关键帧动画*!*/
+        @keyframes rotate3D {
+            16.7%{transform: rotateY(60deg)}
+            33.3%{transform: rotateY(120deg)}
+            50%{transform: rotateY(180deg)}
+            66.7%{transform: rotateY(240deg)}
+            83.3%{transform: rotateY(300deg)}
+            100%{transform: rotateY(360deg)}
+        }
+    </style>
+</head>
+<body>
+
+<div class="photo-wall-3d">
+    <div class="stage">
+        <div class="contains">
+            <img src="./images/05.jpg" style="transform: rotateY(0deg) translateZ(450px)">
+            <img src="./images/06.jpg" style="transform: rotateY(60deg) translateZ(450px)">
+            <img src="./images/07.jpg" style="transform: rotateY(120deg) translateZ(450px)">
+            <img src="./images/08.jpg" style="transform: rotateY(180deg) translateZ(450px)">
+            <img src="./images/09.jpg" style="transform: rotateY(240deg) translateZ(450px)">
+            <img src="./images/10.jpg" style="transform: rotateY(300deg) translateZ(450px)">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
